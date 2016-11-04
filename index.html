@@ -18,7 +18,7 @@
         font-weight: 400;
         margin-bottom: 0;
       }
-      table {     border-collapse: collapse; 
+      table {     border-collapse: collapse;
           margin-top: 1em;
       }
       th {     padding: 5px;     border: 5px solid ; }
@@ -129,7 +129,7 @@
     <textarea id="source">
 name: inverse
 layout: true
-class: left, middle 
+class: left, middle
 ---
 # Raspberry Pi Grundlagen
 
@@ -138,7 +138,7 @@ Philipp Weißmann
 [mail@philipp-weissmann.de](mailto:mail@philipp-weissmann.de)
 ---
 
-# Agenda 
+# Agenda
 
 ---
 ## Agenda
@@ -160,23 +160,26 @@ Philipp Weißmann
 ## Varianten
 Der Raspberry Pi hat 5 "normale" Ausführungen:
 
-Feature/ Modell | A      | B      | A+       | B+       | 2 B      | Zero     
-----------------|--------|--------|----------|----------|----------|----------
-RAM (MB)        | 256    | 512    | 512      | 512      | 1024     | 512      
-USB Schnittst.  | 1      | 2      | 1        | 4        | 4        | 1 (1)    
-Ethernet-Port   | Nein   | Ja     | Nein     | Ja       | Ja       | Nein     
-Speichermedium  | SD     | SD     | Micro-SD | Micro-SD | Micro-SD | Micro-SD 
-Pins            | 26     | 26     | 40       | 40       | 40       | 40       
-CPU             | 1      | 1      | 1        | 1        | 4        | 1        
-Architektur     | ARM11  | ARM11  | ARM11    | ARM11    | ARM A7   | ARM11    
-MHZ             | 700    | 700    | 700      | 700      | 900      | 1.000    
+Feature/ Modell | A      | B      | A+       | B+       | 2 B      |3 B       | Zero
+----------------|--------|--------|----------|----------|----------|----------|--------
+RAM (MB)        | 256    | 512    | 512      | 512      | 1024     | 1024     | 512
+USB Schnittst.  | 1      | 2      | 1        | 4        | 4        | 4        | 1 (1)
+Ethernet-Port   | Nein   | Ja     | Nein     | Ja       | Ja       | Ja (2)   | Nein
+Speichermedium  | SD     | SD     | Micro-SD | Micro-SD | Micro-SD | Micro-SD | Micro-SD
+Pins            | 26     | 26     | 40       | 40       | 40       | 40       | 40
+CPU             | 1      | 1      | 1        | 1        | 4        | 4        | 1
+Architektur     | ARM11  | ARM11  | ARM11    | ARM11    | ARM A7   | ARMv8    | ARM11
+MHZ             | 700    | 700    | 700      | 700      | 900      | 1.200    | 1.000
 
 Ergänzung:
     - (1): Micro USB
+    - (2): Zudem: Wifi, Bluetooth 4.1
 ---
 ## Prozessoren
    - 700/1000 Mhz Arm11 (v6) Prozessor
-   - oder 900 MhZ Arm A7 Prozessor, 4 Kerne
+   - 900 MhZ Arm A7 Prozessor, 4 Kerne oder
+   - 1200 Mhz ArmV8 Prozessor, 4 Kerne
+
    - GPU
      - OpenGL
      - H.264 En-/Dekodieren in Hardware
@@ -196,12 +199,13 @@ Ergänzung:
 ## Anschlüsse 2
 ### Weitere
   - CSI: Kamera-Schnittstelle
-  - 26 Pins (B+: 40)
+  - 26 Pins (ab B+: 40)
     - Davon 17 Pins frei programmierbar
     - u.a. 5V, 3.3V, SPI, I2C und UART möglich
 
 ### Sonstiges
-  - Stromversorgung: Micro USB. Empfehlung: 2 Ampere 
+  - Stromversorgung: Micro USB. Empfehlung: 2 Ampere
+  - Ab Rpi 3: Mindestens 2 Ampere
   - LEDs für Netzwerkzugriff
 
 ### Beachtenswert
@@ -216,6 +220,10 @@ Ergänzung:
   - Video-Auflösung bis 1080p, 30 fps
   - Keine Schärfenstellung
   - Variante ohne Infrarot-Filter erhältlich (NoIR)
+
+### Raspberrpi Display
+  - Anschluss via Display Kabel, HDMI damit frei
+  - 7 Zoll, 800x600 Pixel, 10 Finger kapazitiver Touch
 
 ### Gertboard
   - LEDs
@@ -244,14 +252,15 @@ Ergänzung:
 ## Raspbian
   - Linux
   - Aktuell: Debian 8 ("Jessie")
-  - Vorgänger: Debian 7 ("Wheezy") 
-  - ca. 3 GB Image
+  - Vorgänger: Debian 7 ("Wheezy")
+  - ca. 3 GB Image ("Jessie light": Schmaler Platzbedarf)
   - Basis für diesen Kurs
   - De-Facto Standard für die meisten Projekte
   - Download über Raspberry Pi Webseite
       - [https://www.raspberrypi.org/downloads/raspbian/](https://www.raspberrypi.org/downloads/raspbian/)
 ---
 ## Mehr Linux
+- [RetroPi](https://retropie.org.uk/)
 - [OpenSUSE](https://en.opensuse.org/openSUSE:Raspberry_Pi)
 - [Kali Linux](http://de.docs.kali.org/armel-armhf-de/installation-von-kali-arm-auf-einem-raspberry-pi)
 - [Pidora](http://pidora.ca/)
@@ -380,7 +389,7 @@ Vor dem Ausschalten sollte das Betriebssystem zuvor heruntergefahren werden
 - Hinweis: Wenn zum Zeitpunkt des Bootens kein HDMI Bildschirm angeschlossen ist, wird Composite benutzt.
 - System zeigt Betriebssystem-Informationen an
 - System startet das Systemprogramm "raspi-config"
-- Mindestens sollte das System-Image auf die Größe der SD-Karte angepasst werden: 
+- Mindestens sollte das System-Image auf die Größe der SD-Karte angepasst werden:
   - "Resize Filesystem"
 - Nach den Einstellungen muss das System neugestartet werden (Akzeptieren)
 
@@ -403,10 +412,10 @@ Der erste und wichtigste Befehl ist `man`.
 
 `man` ruft die Hilfeseite eines Programms auf, falls diese installiert ist. Für praktisch alle aus dem Repository installierten Programme ist dies der Fall.
 
-Beispiele: 
+Beispiele:
   - `man man`
   - `man ls`
-  
+
 (Hinweis: Programm beenden mit `q`)
 ---
 ## man 2
@@ -431,10 +440,10 @@ Weitere Hinweise:
 ---
 ## ls
 
-ls |               | Listet Dateien und Verzeichnisse auf            
+ls |               | Listet Dateien und Verzeichnisse auf
 ---|---------------|-------------------------------------------------
-   | `ls /home/pi` | ... im Verzeichnis /home/pi                    
-   | `ls -a`       | ... inklusive versteckter Dateien/Verzeichnisse 
+   | `ls /home/pi` | ... im Verzeichnis /home/pi
+   | `ls -a`       | ... inklusive versteckter Dateien/Verzeichnisse
 
 ---
 
@@ -447,29 +456,29 @@ ls |               | Listet Dateien und Verzeichnisse auf
 
 ---
 ## pwd
- pwd   |               | Gibt das gegenwärtige Verzeichnis aus            
+ pwd   |               | Gibt das gegenwärtige Verzeichnis aus
 -------|---------------|--------------------------------------------------
-       | `pwd`         | 
+       | `pwd`         |
 
 ---
 ## mkdir, rmdir
 
- mkdir |               | Legt ein Verzeichnis an               
+ mkdir |               | Legt ein Verzeichnis an
 -------|---------------|--------------------------------------
-       | `mkdir hello` | Legt das Verzeichnis *hello* an       
+       | `mkdir hello` | Legt das Verzeichnis *hello* an
 
 
 
- rmdir |               | Löscht ein leeres Verzeichnis         
+ rmdir |               | Löscht ein leeres Verzeichnis
 -------|---------------|---------------------------------------
-       | `rmdir hello` | Löscht das leere Verzeichnis *hello*  
+       | `rmdir hello` | Löscht das leere Verzeichnis *hello*
 ---
 
 ## rm
- rm |                 | Löscht eine Datei           
+ rm |                 | Löscht eine Datei
 ----|-----------------|-----------------------------
-    | `rm mysong.mp3` | Löscht die Datei *mysong.mp3* 
-    | `rm -r vz`      | Löscht das Verzeichnis *vz* und alle Dateien darin   
+    | `rm mysong.mp3` | Löscht die Datei *mysong.mp3*
+    | `rm -r vz`      | Löscht das Verzeichnis *vz* und alle Dateien darin
 ---
 ## touch
  touch |                   | Lege Datei an oder setze ihr Änderungsdatum auf *jetzt*
@@ -479,13 +488,13 @@ ls |               | Listet Dateien und Verzeichnisse auf
 ## du, df
  du |                   | Gibt den Speicherverbrauch einer Datei / eines Verzeichnisses aus
 ----|-------------------|--------------------------------------------
-    | `du mysong.mp3`   | Gib Speicherverbrauch von *mysong.mp3* aus 
-    | `du -h mysong.mp3`| Gibt den Speicherverbrauch von *mysong.mp3* menschenlesbar aus (Einheiten wie MB, GB)  
+    | `du mysong.mp3`   | Gib Speicherverbrauch von *mysong.mp3* aus
+    | `du -h mysong.mp3`| Gibt den Speicherverbrauch von *mysong.mp3* menschenlesbar aus (Einheiten wie MB, GB)
 
 
  df |               | Gibt den verfügbaren/benutzten Speicher der eingebundenen Geräten aus
 ----|---------------|--------------------------------------------
-    | `df -h`         | ... menschenlesbar (Einheiten wie MB, GB)  
+    | `df -h`         | ... menschenlesbar (Einheiten wie MB, GB)
 ---
 
 # Im Dateisystem
@@ -496,46 +505,46 @@ ls |               | Listet Dateien und Verzeichnisse auf
 - Speicherorte (z.B. Festplatten, Netzwerk-Freigaben, USB-Sticks) können in den Baum eingehängt werden
 ---
 ## Übersicht 1
- Ort     | Beschreibung                                            
+ Ort     | Beschreibung
 ---------|---------------------------------------------------------
- `/`     | Erste Hierarchiebene                                    
- `/bin`  | Executables von Basis-Werkzeugen                        
- `/sbin` | Executables von Basis-Werkzeugen, auch bei unvollständigem Booten vorhanden 
- `/lib`  | Bibliotheken für Programme in /bin und /sbin            
- `/opt`  | Optionale Software Pakete                               
- `/boot` | Daten zum Booten des Systems (z.B. Kernel)              
- `/home` | Verzeichnisse der Benutzer des Systems, z.B. */home/pi* 
- `/root` | Verzeichnis des Benutzers *root*                        
+ `/`     | Erste Hierarchiebene
+ `/bin`  | Executables von Basis-Werkzeugen
+ `/sbin` | Executables von Basis-Werkzeugen, auch bei unvollständigem Booten vorhanden
+ `/lib`  | Bibliotheken für Programme in /bin und /sbin
+ `/opt`  | Optionale Software Pakete
+ `/boot` | Daten zum Booten des Systems (z.B. Kernel)
+ `/home` | Verzeichnisse der Benutzer des Systems, z.B. */home/pi*
+ `/root` | Verzeichnis des Benutzers *root*
 
 ---
 ## Übersicht 2
 
- Ort          | Beschreibung                                        
+ Ort          | Beschreibung
 --------------|-----------------------------------------------------
  `/etc`       | Konfigurationsdaten für Systemeinstellungen und Dienste
- `/mnt`       | Üblicher Ort um Dateisysteme (temp.) einzubinden    
- `/media`     | Üblicher Ort um Wechseldatenträger einzubinden      
+ `/mnt`       | Üblicher Ort um Dateisysteme (temp.) einzubinden
+ `/media`     | Üblicher Ort um Wechseldatenträger einzubinden
  `/usr`       | Zweite Hierarchiebene, Pfad für weitere Programme. Es gibt viele Pfade nochmals unter `/usr`, z.B. `/usr/bin`, `/usr/lib`, ...
  `/usr/local` | Dritte Hierarchiebene, Pfad für weitere Programme. Empfehlung: Programme, die man manuell installiert, hierhin installieren
 
 ---
 ## Übersicht 3
- Ort           | Beschreibung                                     
+ Ort           | Beschreibung
 ---------------|--------------------------------------------------
- `/dev`        | Virtuelles Dateisystem: Enthält Geräte (Devices) 
- `/sys`        | ... Enthält Systeminformationen                  
- `/proc`       | ... Enthält Prozessinformationen                 
- `/run`        | ... Systeminformationen seit dem letzten Boot    
- `/srv`        | Daten, die von System *geserved* werden          
+ `/dev`        | Virtuelles Dateisystem: Enthält Geräte (Devices)
+ `/sys`        | ... Enthält Systeminformationen
+ `/proc`       | ... Enthält Prozessinformationen
+ `/run`        | ... Systeminformationen seit dem letzten Boot
+ `/srv`        | Daten, die von System *geserved* werden
  `/tmp`        | Temporäre Dateien
- `/var`        | Dateien variabler Größe,  z.B. Mailqueues, Logdaten, usw.  
+ `/var`        | Dateien variabler Größe,  z.B. Mailqueues, Logdaten, usw.
  `/lost+found` | Ort für wiederhergestellte Dateien
 
 ---
 
 ## Besondere Ordner
 
-- Reale und virtuelle Geräte sind Verzeichnisse/Dateien. 
+- Reale und virtuelle Geräte sind Verzeichnisse/Dateien.
 - Beispiele:
   - Partition 1 von IDE Festplatte ist `/dev/hda1`
   - `/dev/null` enthält *null*
@@ -563,7 +572,7 @@ ls |               | Listet Dateien und Verzeichnisse auf
 - Ändern der Zugehörigkeit einer Datei/VZ zu...
   - Besitzer: `chown`
   - Gruppe: `chgrp`
-  
+
 - Beispiele:
   - `chown jens meinprogramm`
   - `chgrp buchhaltung jahresplan.csv`
@@ -593,7 +602,7 @@ ls |               | Listet Dateien und Verzeichnisse auf
 # Systemprogramme
 ---
 ## Verschiedenen Systemprogramme 1
- `raspi-config` | Programm zur Verwaltung der grundliegenden Funktionalitäten des Raspberry Pi. Wird beim ersten Booten gestartet          
+ `raspi-config` | Programm zur Verwaltung der grundliegenden Funktionalitäten des Raspberry Pi. Wird beim ersten Booten gestartet
 ----------------|--------------------------------------------
                 | Hinweis: Root Rechte erforderlich!
 
@@ -602,12 +611,12 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 ## Verschiedenen Systemprogramme 2
  apt-get                | Programm zur Verwaltung, De- und Installation von Softwarepaketen
 ------------------------|-----------------------------------------
- `apt-get update`       | Aktualisiert die Liste der verfügbaren Software (z.B. neue Softwarepakete, aktualisierte Softwarepakete) 
- `apt-get upgrade`      | Aktualisiert die auf dem System vorhandenen und installierten Programme 
- `apt-get dist-upgrade` | Wie "apt-get upgrade", löst jedoch zusätzlich Abhängigkeiten auf und deinstalliert evtl. nicht mehr benötigte Bibliotheken. Tipp: Dann benutzen, wenn `apt-get upgrade` Pakete "zurückhält"   
- `apt-get install FOO`  | Installiert Paket "FOO" und alle dazu notwendigen Vorraussetzungen 
- `apt-get remove FOO`   | Deinstalliert das Paket "FOO", Konfiguration verbleibt jedoch auf dem System                                   
- `apt-get purge FOO`    | Deinstalliert das Paket "FOO" und entfernt auch alle Konfigurationsdateien 
+ `apt-get update`       | Aktualisiert die Liste der verfügbaren Software (z.B. neue Softwarepakete, aktualisierte Softwarepakete)
+ `apt-get upgrade`      | Aktualisiert die auf dem System vorhandenen und installierten Programme
+ `apt-get dist-upgrade` | Wie "apt-get upgrade", löst jedoch zusätzlich Abhängigkeiten auf und deinstalliert evtl. nicht mehr benötigte Bibliotheken. Tipp: Dann benutzen, wenn `apt-get upgrade` Pakete "zurückhält"
+ `apt-get install FOO`  | Installiert Paket "FOO" und alle dazu notwendigen Vorraussetzungen
+ `apt-get remove FOO`   | Deinstalliert das Paket "FOO", Konfiguration verbleibt jedoch auf dem System
+ `apt-get purge FOO`    | Deinstalliert das Paket "FOO" und entfernt auch alle Konfigurationsdateien
 
 ---
 
@@ -616,32 +625,32 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
  systemctl                  | Verwaltet Systemdienste
 ----------------------------|------------------------------
  `systemctl status nginx`   | Zeigt den Status des Dienstes *nginx*
- `systemctl start nginx`    | Startet den Dienst *nginx*    
- `systemctl stop nginx`     | Stoppt den Dienst *nginx*     
- `systemctl restart nginx`  | Neustart des Dienstes *nginx* 
- `systemctl enable nginx`   | Startet den Dienst *nginx* beim Systemstart 
+ `systemctl start nginx`    | Startet den Dienst *nginx*
+ `systemctl stop nginx`     | Stoppt den Dienst *nginx*
+ `systemctl restart nginx`  | Neustart des Dienstes *nginx*
+ `systemctl enable nginx`   | Startet den Dienst *nginx* beim Systemstart
  `systemctl disable nginx`  | Startet den Dienst *nginx* nicht (mehr) beim Systemstart
 
 ---
 ## Verschiedenen Systemprogramme 4
 ### Wheezy (init)
- service                 | Startet und Stoppt Dienste    
+ service                 | Startet und Stoppt Dienste
 -------------------------|------------------------------
- `service nginx stop`    | Stoppt den Dienst *nginx*     
- `service nginx start`   | Startet den Dienst *nginx*    
- `service nginx restart` | Neustart des Dienstes *nginx* 
+ `service nginx stop`    | Stoppt den Dienst *nginx*
+ `service nginx start`   | Startet den Dienst *nginx*
+ `service nginx restart` | Neustart des Dienstes *nginx*
 
 
  update-rc.d                  | Konfiguriert, welche Dienste beim Systemstart gestartet werden
 ------------------------------|------------------------------
- `update-rc.d nginx defaults` | Startet den Dienst *nginx* beim Systemstart (Webserver) 
+ `update-rc.d nginx defaults` | Startet den Dienst *nginx* beim Systemstart (Webserver)
  `update-rc.d nginx disable`  | Startet den Dienst *nginx* nicht (mehr) beim Systemstart
 ---
 
 ## Verschiedenen Systemprogramme 6
- `reboot`          | Startet das System neu                      
+ `reboot`          | Startet das System neu
 -------------------|---------------------------------------------
- `shutdown`        | Zum Herunterfahren / Neustarten des Systems 
+ `shutdown`        | Zum Herunterfahren / Neustarten des Systems
  `shutdown now -h` | Fahre das System jetzt herunter und bleibe dann stehen (kein Neustart)
 
 ---
@@ -649,16 +658,16 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 ## Verschiedenen Systemprogramme 7
  passwd      | Setzt das eigene Passwort / das Passwort eines anderen Benutzers neu
 -------------|-------------------------------------------
- `passwd`    | Setze mein Passwort neu                   
- `passwd pi` | Setzt das Passwort des Benutzers *pi* neu 
+ `passwd`    | Setze mein Passwort neu
+ `passwd pi` | Setzt das Passwort des Benutzers *pi* neu
 
 ---
 
 # SSH
 ---
-## Motivation 
+## Motivation
 - Gerät wird oftmals verbaut (Garage, Schrank, ...)
-- Zugriff aus der Ferne 
+- Zugriff aus der Ferne
 - Zugriff: SSH
 - Verschlüsselt, sicherer Zugriff auf System
 - Läuft als Dienst (default: An)
@@ -687,8 +696,8 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
      - Save private key (speichern als `id_rsa`)
      - Save public key (speichern als `id_rsa.pub`)
      - Text von Schlüssel in Zwischenablage kopieren (*Public key for pasting...*)
-     
-     
+
+
   - Auf Server Schlüssel eintragen
      - Verzeichnis anlegen
      - `mkdir ~/.ssh/`
@@ -696,7 +705,7 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
      - `nano authorized_keys`
      - Am Ende der Datei Inhalt aus Zwischenablage einfügen
      - Datei speichern
-     
+
 ---
 ## Login ohne Passwort 2
   - In Putty eintragen
@@ -716,6 +725,7 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 # Netzwerk-Einstellungen
 ---
 ## Netzwerk 1
+- Achtung: Bitte die aktuelle Nutzung von DHCPCD diesen beenden oder auf statische IP Konfigurieren
 - IP-Einstellungen finden sich unter `/etc/network/interfaces`
 - Öffnen also z.B. mit `nano /etc/network/interfaces`
 
@@ -731,9 +741,9 @@ iface eth0 inet dhcp
 -------------|-------------------------------------------
  iface       | Interface
  lo          | *Loopback*:  Dies ist ein Netzwerkgerät für Netzwerkkommunikation, die den Rechner nicht verlässt.
- inet        | Ip-Netzwerk (IPv4)                        
- loopback    | Betreibe es als Loopback-Device           
- eth0        | Name des Geräts, hier: *eth0* für *Ethernet, Gerät Nummer 0*                  
+ inet        | Ip-Netzwerk (IPv4)
+ loopback    | Betreibe es als Loopback-Device
+ eth0        | Name des Geräts, hier: *eth0* für *Ethernet, Gerät Nummer 0*
  dhcp        | Benutze DHCP, d.h. beziehe IP-Adresse von DHCP Server (oft: Router)
 ---
 
@@ -747,12 +757,12 @@ netmask 255.255.255.0
 gateway 192.168.1.1
 ```
 ### Bedeutung
- Bestandteil | Erklärung                                         
+ Bestandteil | Erklärung
 -------------|---------------------------------------------------
- static      | Benutze eine fest zugewiesene IP-Adresse          
- address     | Setze das Device auf diese IP Adresse             
- netmask     | Setze das Device auf diese Netzmaske              
- gateway     | Setze das Device auf diesen Gateway (oft: Router) 
+ static      | Benutze eine fest zugewiesene IP-Adresse
+ address     | Setze das Device auf diese IP Adresse
+ netmask     | Setze das Device auf diese Netzmaske
+ gateway     | Setze das Device auf diesen Gateway (oft: Router)
 ---
 
 # Mounten
@@ -760,7 +770,7 @@ gateway 192.168.1.1
 ## Mounten
 - Laufwerke und Netzdienste bekommen unter Linux/Unix/OS X keinen Laufwerksbuchstaben
 - Statt Laufwerksbuchstaben werden diese in das vorhandene Dateisysten eingebunden
-- Beispiele: 
+- Beispiele:
   - `mount` gibt die aktuell eingebundenen Pfade aus
   - `mount /dev/sda1 /mnt/meinUSBStick` bindet das Gerät mit der Adresse */dev/sda1* im Verzeichnis */mnt/meinUSBStick* ein
   - `umount /mnt/meinUSBStick` wirft das Gerät aus, welches bei */mnt/meineUSBStick* eingebunden ist
@@ -779,7 +789,7 @@ gateway 192.168.1.1
   - `sudo apt-get install samba samba-common-bin`
 - Samba konfigurieren
   - `sudo nano /etc/samba/smb.conf`
-  - Ersetzen: 
+  - Ersetzen:
     `# Security = user`
   durch
     `Security = user`
@@ -788,7 +798,7 @@ gateway 192.168.1.1
   - `sudo smbpasswd -a pi`
 ---
 ## SMB 3
-- Rechte auf Freigabe setzen 
+- Rechte auf Freigabe setzen
   - (Beispiel hier: USB-Stick/Festplatte an /media/usb1)
   - Ändere das Besitztum rekursiv auf den Benutzer *pi*, die Gruppe *pi* - von folgendem Verzeichnis: */media/usb1*
   - `sudo chown -R pi:pi /media/usb1`
@@ -800,7 +810,7 @@ gateway 192.168.1.1
 path = /media/usb1
 writeable = yes
 guest ok = no
-``` 
+```
 
   - Anmerkung:
 `guest ok = yes`
@@ -812,16 +822,16 @@ lässt auch Gastbenutzer zu
   - Folgendes ersetzen:
 
     `workgroup = WORKGROUP`
-    
+
     mit
 
     `workgroup = MEINEARBEITSGRUPPE`
 - Dienst (neu)starten:
 
-   `sudo systemctl restart samba` 
-   
+   `sudo systemctl restart samba`
+
    bzw.
-   
+
    `sudo service samba restart`
 ---
 # Cronjob
@@ -839,18 +849,18 @@ lässt auch Gastbenutzer zu
 ## Cronjob 2
 ### Syntax mit Beispielen
 
- Min.       | Std. | Tag | Mon | WTag | Befehl                 
+ Min.       | Std. | Tag | Mon | WTag | Befehl
 ------------|------|-----|-----|------|------------------------
- 42         |    4 | *   | *   | *    | `rm -rf /tmp/temp.jpg` 
- *          |    * | *   | *   | *    | `ping -c1 google.com`    
- 0,15,30,45 | 7-20 | *   | *   | *    | `/home/pi/myscript.sh` 
+ 42         |    4 | *   | *   | *    | `rm -rf /tmp/temp.jpg`
+ *          |    * | *   | *   | *    | `ping -c1 google.com`
+ 0,15,30,45 | 7-20 | *   | *   | *    | `/home/pi/myscript.sh`
 
 ### Was tut was?
 1. Lösche jede Nacht um 4 Uhr 42 die Datei */tmp/temp.jpg*
 2. Sende jede Minute einen(!) Ping an *google.com*
 3. Starte zwischen 7 und 20 Uhr  alle Viertelstunde das Skript */home/pi/myscript.sh*
 ---
-   
+
 # Supervisor
 Anmerkung: Für Wheezy interessant, Jessie: Systemd Skripte schreiben
 ---
