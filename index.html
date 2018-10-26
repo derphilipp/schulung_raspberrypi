@@ -205,7 +205,8 @@ Ergänzung:
 
 ### Sonstiges
   - Stromversorgung: Micro USB. Empfehlung: 2 Ampere
-  - Ab Rpi 3: Mindestens 2 Ampere
+  - Ab Rpi 3B: Mindestens 2 Ampere
+  - Ab Rpi 3B+: Mindestens 2.5 Ampere
   - LEDs für Netzwerkzugriff
 
 ### Beachtenswert
@@ -251,9 +252,9 @@ Ergänzung:
 ---
 ## Raspbian
   - Linux
-  - Aktuell: Debian 8 ("Jessie")
-  - Vorgänger: Debian 7 ("Wheezy")
-  - ca. 3 GB Image ("Jessie light": Schmaler Platzbedarf)
+  - Aktuell: Debian 9 ("Stretch")
+  - Vorgänger: Debian 8 ("Jessie")
+  - ca. 3 GB Image ("Stretch light": Schmaler Platzbedarf)
   - Basis für diesen Kurs
   - De-Facto Standard für die meisten Projekte
   - Download über Raspberry Pi Webseite
@@ -726,11 +727,22 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 ---
 ## Netzwerk 1
 - Achtung: Bitte die aktuelle Nutzung von DHCPCD diesen beenden oder auf statische IP Konfigurieren
-- IP-Einstellungen finden sich unter `/etc/network/interfaces`
-- Öffnen also z.B. mit `nano /etc/network/interfaces`
+- Neuere Versionen:
+- IP-Einstellungen finden sich unter `/etc/dhcpcd.conf`
+- Öffnen also z.B. mit `nano /etc/dhcpcd.conf`
+- Danach Dienst neu starten
 
 ---
-### Inhalt
+### Inhalt neu (statisches Beispiel)
+```
+interface enxb827ebd19329
+static ip_address=192.168.1.30
+static routers=192.168.1.1
+static domain_name_servers=8.8.8.8,192.168.1.30
+```
+
+---
+### Inhalt alt
 ```
 iface lo inet loopback
 iface eth0 inet dhcp
