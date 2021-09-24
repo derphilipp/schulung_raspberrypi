@@ -1,130 +1,190 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="keywords" content="raspberry,pi,linux,raspbian,Präsentation" />
     <meta name="description" content="Raspberry Pi für Einsteiger" />
     <title>Raspberry Pi für Einsteiger</title>
     <style>
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body {
-        font-family: 'Droid Serif';
-      }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: 400;
-        margin-bottom: 0;
-      }
-      table {     border-collapse: collapse;
-          margin-top: 1em;
-      }
-      th {     padding: 5px;     border: 5px solid ; }
-      td {     padding: 5px;     border: 3px solid ; }
-      /*th, td {     padding: 5px;     border: 5px solid red; }*/
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
-      .footnote {
-        position: absolute;
-        bottom: 3em;
-      }
-      li p { line-height: 1.25em; }
-      .red { color: #fa0000; }
-      .large { font-size: 2em; }
-      a, a > code {
-        color: rgb(249, 38, 114);
-        text-decoration: none;
-      }
-      code {
-        background: #e7e8e2;
-        border-radius: 5px;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .remark-code-line-highlighted     { background-color: #373832; }
-      .pull-left {
-        float: left;
-        width: 47%;
-      }
-      .pull-right {
-        float: right;
-        width: 47%;
-      }
-      .pull-right ~ p {
-        clear: both;
-      }
-      #slideshow .slide .content code {
-        font-size: 0.8em;
-      }
-      #slideshow .slide .content pre code {
-        font-size: 0.9em;
-        padding: 15px;
-      }
-      .inverse {
-        background: #272822;
-        color: #777872;
-        text-shadow: 0 0 20px #333;
-      }
-      .inverse h1, .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
-
-      /* Slide-specific styling */
-      #slide-inverse .footnote {
-        bottom: 12px;
-        left: 20px;
-      }
-      #slide-how .slides {
-        font-size: 0.9em;
-        position: absolute;
-        top:  151px;
-        right: 140px;
-      }
-      #slide-how .slides h3 {
-        margin-top: 0.2em;
-      }
-      #slide-how .slides .first, #slide-how .slides .second {
-        padding: 1px 20px;
-        height: 90px;
-        width: 120px;
-        -moz-box-shadow: 0 0 10px #777;
-        -webkit-box-shadow: 0 0 10px #777;
-        box-shadow: 0 0 10px #777;
-      }
-      #slide-how .slides .first {
-        background: #fff;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        z-index: 1;
-      }
-      #slide-how .slides .second {
-        position: relative;
-        background: #fff;
-        z-index: 0;
-      }
-
-      /* Two-column layout */
-      .left-column {
-        color: #777;
-        width: 20%;
-        height: 92%;
-        float: left;
-      }
-        .left-column h2:last-of-type, .left-column h3:last-child {
-          color: #000;
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+        body {
+            font-family: 'Droid Serif';
         }
-      .right-column {
-        width: 75%;
-        float: right;
-        padding-top: 1em;
-      }
+        
+        h1,
+        h2,
+        h3 {
+            font-family: 'Yanone Kaffeesatz';
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        
+        th {
+            padding: 5px;
+            border: 5px solid;
+        }
+        
+        td {
+            padding: 5px;
+            border: 3px solid;
+        }
+        /*th, td {     padding: 5px;     border: 5px solid red; }*/
+        
+        .remark-slide-content h1 {
+            font-size: 3em;
+        }
+        
+        .remark-slide-content h2 {
+            font-size: 2em;
+        }
+        
+        .remark-slide-content h3 {
+            font-size: 1.6em;
+        }
+        
+        .footnote {
+            position: absolute;
+            bottom: 3em;
+        }
+        
+        li p {
+            line-height: 1.25em;
+        }
+        
+        .red {
+            color: #fa0000;
+        }
+        
+        .large {
+            font-size: 2em;
+        }
+        
+        a,
+        a>code {
+            color: rgb(249, 38, 114);
+            text-decoration: none;
+        }
+        
+        code {
+            background: #e7e8e2;
+            border-radius: 5px;
+        }
+        
+        .remark-code,
+        .remark-inline-code {
+            font-family: 'Ubuntu Mono';
+        }
+        
+        .remark-code-line-highlighted {
+            background-color: #373832;
+        }
+        
+        .pull-left {
+            float: left;
+            width: 47%;
+        }
+        
+        .pull-right {
+            float: right;
+            width: 47%;
+        }
+        
+        .pull-right~p {
+            clear: both;
+        }
+        
+        #slideshow .slide .content code {
+            font-size: 0.8em;
+        }
+        
+        #slideshow .slide .content pre code {
+            font-size: 0.9em;
+            padding: 15px;
+        }
+        
+        .inverse {
+            background: #272822;
+            color: #777872;
+            text-shadow: 0 0 20px #333;
+        }
+        
+        .inverse h1,
+        .inverse h2 {
+            color: #f3f3f3;
+            line-height: 0.8em;
+        }
+        /* Slide-specific styling */
+        
+        #slide-inverse .footnote {
+            bottom: 12px;
+            left: 20px;
+        }
+        
+        #slide-how .slides {
+            font-size: 0.9em;
+            position: absolute;
+            top: 151px;
+            right: 140px;
+        }
+        
+        #slide-how .slides h3 {
+            margin-top: 0.2em;
+        }
+        
+        #slide-how .slides .first,
+        #slide-how .slides .second {
+            padding: 1px 20px;
+            height: 90px;
+            width: 120px;
+            -moz-box-shadow: 0 0 10px #777;
+            -webkit-box-shadow: 0 0 10px #777;
+            box-shadow: 0 0 10px #777;
+        }
+        
+        #slide-how .slides .first {
+            background: #fff;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            z-index: 1;
+        }
+        
+        #slide-how .slides .second {
+            position: relative;
+            background: #fff;
+            z-index: 0;
+        }
+        /* Two-column layout */
+        
+        .left-column {
+            color: #777;
+            width: 20%;
+            height: 92%;
+            float: left;
+        }
+        
+        .left-column h2:last-of-type,
+        .left-column h3:last-child {
+            color: #000;
+        }
+        
+        .right-column {
+            width: 75%;
+            float: right;
+            padding-top: 1em;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- class: left, middle, inverse -->
     <textarea id="source">
 name: inverse
@@ -160,25 +220,27 @@ Philipp Weißmann
 ## Varianten
 Der Raspberry Pi hat 5 "normale" Ausführungen:
 
-Feature/ Modell | A      | B      | A+       | B+       | 2 B      |3 B       | Zero
-----------------|--------|--------|----------|----------|----------|----------|--------
-RAM (MB)        | 256    | 512    | 512      | 512      | 1024     | 1024     | 512
-USB Schnittst.  | 1      | 2      | 1        | 4        | 4        | 4        | 1 (1)
-Ethernet-Port   | Nein   | Ja     | Nein     | Ja       | Ja       | Ja (2)   | Nein
-Speichermedium  | SD     | SD     | Micro-SD | Micro-SD | Micro-SD | Micro-SD | Micro-SD
-Pins            | 26     | 26     | 40       | 40       | 40       | 40       | 40
-CPU             | 1      | 1      | 1        | 1        | 4        | 4        | 1
-Architektur     | ARM11  | ARM11  | ARM11    | ARM11    | ARM A7   | ARMv8    | ARM11
-MHZ             | 700    | 700    | 700      | 700      | 900      | 1.200    | 1.000
+Feature/ Modell | A      | B      | B+       | 2 B      |3 B       | Zero    | 4 B
+----------------|--------|--------|----------|----------|----------|---------|-----
+RAM (MB)        | 256    | 512    | 512      | 1024     | 1024     | 512     | bis 8 GB
+USB Schnittst.  | 1      | 2      | 4        | 4        | 4        | 1 (1)   | 4 (3)
+Ethernet-Port   | Nein   | Ja     | Ja       | Ja       | Ja (2)   | Nein    | Ja
+Speichermedium  | SD     | SD     | Micro-SD | Micro-SD | Micro-SD | Micro-SD| Micro-SD
+Pins            | 26     | 26     | 40       | 40       | 40       | 40      | 40
+CPU             | 1      | 1      | 1        | 4        | 4        | 1       | 4
+Architektur     | ARM11  | ARM11  | ARM11    | ARM A7   | ARMv8    | ARM11   | ARMv8
+MHZ             | 700    | 700    | 700      | 900      | 1.200    | 1.000   | 1.500
 
 Ergänzung:
-    - (1): Micro USB
+    - (1): Micro USB; Bei W-Modell: Wifi
     - (2): Zudem: Wifi, Bluetooth 4.1
+    - (3): Zudem: Wifi, Bluetooth 5.0
 ---
 ## Prozessoren
    - 700/1000 Mhz Arm11 (v6) Prozessor
    - 900 MhZ Arm A7 Prozessor, 4 Kerne oder
    - 1200 Mhz ArmV8 Prozessor, 4 Kerne
+   - 1500 Mhz Cortex-A72 (ARM v8), 4 Kerne
 
    - GPU
      - OpenGL
@@ -189,7 +251,7 @@ Ergänzung:
 ## Anschlüsse 1
 
 ### Video
-  - HDMI Ausgang (Zero: Micro-HDMI)
+  - HDMI Ausgang (Zero: Mini-HDMI, ab 4: Micro-HDMI)
   - Composite-Video (ab B+: Nur per Klinkenstecker)
 
 ### Audio
@@ -207,6 +269,7 @@ Ergänzung:
   - Stromversorgung: Micro USB. Empfehlung: 2 Ampere
   - Ab Rpi 3B: Mindestens 2 Ampere
   - Ab Rpi 3B+: Mindestens 2.5 Ampere
+  - Ab Rpi 4B+: Mindestens 3 Ampere
   - LEDs für Netzwerkzugriff
 
 ### Beachtenswert
@@ -250,11 +313,11 @@ Ergänzung:
 ---
 # Betriebssysteme
 ---
-## Raspbian
+## Raspbian - heute "Raspberry Pi OS"
   - Linux
-  - Aktuell: Debian 9 ("Stretch")
-  - Vorgänger: Debian 8 ("Jessie")
-  - ca. 3 GB Image ("Stretch light": Schmaler Platzbedarf)
+  - Aktuell: Debian 10 ("Buster")
+  - Vorgänger: Debian 9 ("Stretch")
+  - ca. 3 GB Image ("Light": Schmaler Platzbedarf, "Normal": GUI, "Full": Empfohlene Programme)
   - Basis für diesen Kurs
   - De-Facto Standard für die meisten Projekte
   - Download über Raspberry Pi Webseite
@@ -267,6 +330,7 @@ Ergänzung:
 - [Pidora](http://pidora.ca/)
 - [Ubuntu Mate](https://ubuntu-mate.org/raspberry-pi/)
 - [Snappy Ubuntu Core](https://developer.ubuntu.com/en/snappy/start/#snappy-raspi2)
+- [Manjaro Linux](https://manjaro.org/)
 - u.v.m.
 ---
 ## Kodi: Multimedia
@@ -283,10 +347,12 @@ Ergänzung:
 - [NetBSD](http://wiki.netbsd.org/ports/evbarm/raspberry_pi/)
 - [Android](https://groups.google.com/forum/#!forum/android-rpi)
 - [Windows 10 IOT Core](http://ms-iot.github.io/content/en-US/Downloads.htm)
+- [Windows 11 Preview](https://www.heise.de/news/Windows-11-laeuft-auf-dem-Raspberry-Pi-4-6127592.html)
 ---
 ## Sonstiges
 - Image "NOOBS", installiert verschiedene Systeme auf Wunsch
   - [https://www.raspberrypi.org/downloads/noobs/](https://www.raspberrypi.org/downloads/noobs/)
+- Durch Installer schauen und Images ausprobieren!
 ---
 # Alternativen zum Raspberry Pi
 ---
@@ -315,7 +381,7 @@ Ergänzung:
 - Arduino: Soft- und Hardwareplattform für embedded-Entwicklung.
 
 ### Charakteristika
-- Programmierung in C/C++
+- Programmierung in C/C++, teilweise (Micro)python, Lua oder Javascript
 - Kein "volles" Betriebssystem
 - Kein kompletter Rechner, sondern embedded Plattform
 - Sehr modular, oft sehr günstig
@@ -345,6 +411,7 @@ Ergänzung:
 - Raspberry Pi hat kein klassisches BIOS
 - Ohne Betriebssystem bleibt der Pi stumm
 - Pi kann nur von SD Karte booten (kein USB!)
+- Seit Raspberry Pi 4: Booten von USB nach Firmware update möglich
 
 ## Start von SD
 - Auf die SD Karte kommt ein startfähiges System
@@ -622,7 +689,7 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 ---
 
 ## Verschiedenen Systemprogramme 3
-### Jessie (systemd)
+### Jessie und spätere (systemd basiert)
  systemctl                  | Verwaltet Systemdienste
 ----------------------------|------------------------------
  `systemctl status nginx`   | Zeigt den Status des Dienstes *nginx*
@@ -690,31 +757,38 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 ---
 
 ## Login ohne Passwort 1
-  - Schlüssel erzeugen:
+  - Schlüssel erzeugen (neue Anleitung):
+    - Windows: `ssh-keygen -t ed25519
+  - Schlüssel erzeugen (alte Anleitung):
      - [Putty Key Generator](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) starten
      - "Numbers of bits in a generated key" sollte mindestens 2048 betragen
      - Generate Key
      - Save private key (speichern als `id_rsa`)
      - Save public key (speichern als `id_rsa.pub`)
-     - Text von Schlüssel in Zwischenablage kopieren (*Public key for pasting...*)
-
 
   - Auf Server Schlüssel eintragen
-     - Verzeichnis anlegen
-     - `mkdir ~/.ssh/`
-     - Datei authorisierter Schlüssel editieren
-     - `nano authorized_keys`
-     - Am Ende der Datei Inhalt aus Zwischenablage einfügen
-     - Datei speichern
+     - Auf lokalem Rechner:
+       - Text von Schlüssel in Zwischenablage kopieren (*Public key for pasting...*)
+     -  Auf SSH Server (Raspberry Pi):
+       - Verzeichnis anlegen
+       - `mkdir ~/.ssh/`
+       - Datei authorisierter Schlüssel editieren
+       - `nano authorized_keys`
+       - Am Ende der Datei Inhalt aus Zwischenablage einfügen
+       - Datei speichern
 
 ---
 ## Login ohne Passwort 2
-  - In Putty eintragen
-     - Menüpunkt *Connection -> SSH -> Auth*
-     - In *Private key file for authentication* gespeicherte Datei `id_rsa` eintragen
-     - Unter *Session* Servername eintragen (optional: `Benutzername@Servername` übergibt Benutzernamen sofort)
-     - Namen (*Saved Sessions*) vergeben und mit *Save* speichern
-  - Bei jedem weiteren Öffnen von Putty: Doppelklick auf Servername
+  - Via Windows SSH:
+    - `ssh pi@IP_ADRESSE`
+    - Alternativ: `config` Datei in `.ssh` ändern
+  - Via Putty:
+    - In Putty eintragen
+      - Menüpunkt *Connection -> SSH -> Auth*
+      - In *Private key file for authentication* gespeicherte Datei `id_rsa` eintragen
+      - Unter *Session* Servername eintragen (optional: `Benutzername@Servername` übergibt Benutzernamen sofort)
+      - Namen (*Saved Sessions*) vergeben und mit *Save* speichern
+    - Bei jedem weiteren Öffnen von Putty: Doppelklick auf Servername
 ---
 ## Login ohne Passwort 3
 ### Hinweise:
@@ -958,7 +1032,8 @@ environment=HOME="/home/pi", USER="pi"
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+        var slideshow = remark.create();
     </script>
-  </body>
+</body>
+
 </html>
