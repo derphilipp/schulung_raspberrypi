@@ -164,6 +164,10 @@ Ergänzung:
 - Image "NOOBS", installiert verschiedene Systeme auf Wunsch
   - [https://www.raspberrypi.org/downloads/noobs/](https://www.raspberrypi.org/downloads/noobs/)
 - Durch Installer schauen und Images ausprobieren!
+
+## Imager Software:
+- [Raspberry Pi Imager, Empfehlung](https://www.raspberrypi.org/software/)
+- [Balena Etcher](https://www.balena.io/etcher/)
 ---
 # Alternativen zum Raspberry Pi
 ---
@@ -569,7 +573,7 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
 
 ## Login ohne Passwort 1
   - Schlüssel erzeugen (neue Anleitung):
-    - Windows: `ssh-keygen -t ed25519
+    - Windows/MacOS/Linux: `ssh-keygen -t ed25519
   - Schlüssel erzeugen (alte Anleitung):
      - [Putty Key Generator](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) starten
      - "Numbers of bits in a generated key" sollte mindestens 2048 betragen
@@ -596,7 +600,7 @@ Hinweis: Seit Version "Jessie" auch mit grafischer Oberfläche
   - Via Putty:
     - In Putty eintragen
       - Menüpunkt *Connection -> SSH -> Auth*
-      - In *Private key file for authentication* gespeicherte Datei `id_rsa` eintragen
+      - In *Private key file for authentication* gespeicherte Datei z.B. `id_rsa` eintragen
       - Unter *Session* Servername eintragen (optional: `Benutzername@Servername` übergibt Benutzernamen sofort)
       - Namen (*Saved Sessions*) vergeben und mit *Save* speichern
     - Bei jedem weiteren Öffnen von Putty: Doppelklick auf Servername
@@ -759,7 +763,7 @@ lässt auch Gastbenutzer zu
 ---
 
 # Supervisor
-Anmerkung: Für Wheezy interessant, Jessie: Systemd Skripte schreiben
+Anmerkung: Für Wheezy interessant, Ab Jessie, etc.: Systemd Skripte schreiben
 ---
 ## Supervisor
 ### Selbstgeschriebene Programme bei Systemstart starten
